@@ -1,0 +1,11 @@
+# Generated data — reproducible from generate_data.py + ingest.py
+data/events.csv
+data/events.db
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
