@@ -25,6 +25,8 @@ _One line per model — the figures below are produced by the executed notebooks
 
 **Capstone:** the five numbers woven into one narrative — cost → cache → demand → allocation → margin.
 
+📄 **One-page executive brief:** [`portfolio/executive_brief.pdf`](portfolio/executive_brief.pdf) (editable source: [`portfolio/executive_brief.docx`](portfolio/executive_brief.docx)) — the board-level artifact, no code, the five insights + integrated story + recommended decisions.
+
 > Dollar and fleet figures use one clearly-labeled scaling assumption (sample → 1B inferences/day); all **percentage** results are scale-free. Assumptions are stated at the top of each notebook.
 
 ---
@@ -72,6 +74,8 @@ compute-economics-portfolio/
     05_capacity_allocation.ipynb
   portfolio/
     capstone_summary.ipynb   ← integrates one headline result from each model
+    executive_brief.pdf      ← one-page board-level brief (rendered)
+    executive_brief.docx     ← editable source of the brief
   exports/                   ← pre-rendered .html + .pdf of every notebook (charts embedded)
 ```
 
