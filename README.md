@@ -6,8 +6,8 @@ SQLite, and runs five models that each answer a specific question about how
 token usage, batching, caching, demand, and capacity allocation drive compute
 margin.
 
-> **Built for:** OpenAI — Director of Product Finance, Compute & Infrastructure Demand
-> **Data:** 100% synthetic and seeded. Zero confidentiality exposure; full control over the narrative each model surfaces.
+> **Focus:** AI compute & infrastructure demand economics — unit cost, demand forecasting, capacity allocation, and margin.
+> **Data:** 100% synthetic and seeded. Zero confidentiality exposure.
 
 ---
 
@@ -112,13 +112,13 @@ compute margin.
 
 ---
 
-## Models → JD mapping
+## Models → questions answered
 
-| Model | JD bullet it evidences |
-|-------|------------------------|
-| 1 Token Economics | How latency, throughput, and token usage affect margin performance |
-| 2 Inference Economics | Tradeoffs between customer experience, growth, and profitability |
-| 3 Cache Modeling | Frameworks to evaluate ROI on compute and infrastructure spend |
-| 4 Demand Forecasting | Own the consolidated compute and infrastructure demand forecast |
-| 5 Capacity Allocation | Inform allocation, utilization, and margin tradeoffs |
-| Capstone | Durable cross-functional forum + executive/Board-level materials |
+| Model | Question it answers |
+|-------|---------------------|
+| 1 Token Economics | How throughput and token mix drive cost per token and margin |
+| 2 Inference Economics | The latency–throughput–cost tradeoff and where margin optimizes |
+| 3 Cache Modeling | The ROI of cache optimization on effective cost per inference |
+| 4 Demand Forecasting | How usage growth translates into compute and capital requirements |
+| 5 Capacity Allocation | How to optimize utilization against margin across workloads |
+| Capstone | How the five models integrate into an executive decision view |
