@@ -112,7 +112,7 @@ compute margin.
 
 ---
 
-## Models → questions answered
+## Models → Questions answered
 
 | Model | Question it answers |
 |-------|---------------------|
