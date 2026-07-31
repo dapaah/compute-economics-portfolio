@@ -8,6 +8,10 @@ A synthetic, end-to-end body of work exploring the financial architecture requir
 
 ## Start here
 
+[Open Executive Dashboard](https://dapaah.github.io/compute-economics-portfolio/)
+
+[Launch Interactive CFO Dashboard](https://ai-infrastructure-finance.streamlit.app/)
+
 - **[Open the executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — static, zero-install CFO view published through GitHub Pages after deployment.
 - **[Run the interactive Streamlit dashboard](model_06_datacenter_capital_forecasting/dashboard/app.py)** — scenario, site, capital-stack, liquidity, and risk exploration.
 - **[Read the executive brief](model_06_datacenter_capital_forecasting/data/outputs/dashboard/executive_brief.md)** — concise decision narrative.
