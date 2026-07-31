@@ -1,0 +1,10 @@
+{
+  "base_total_capex_usd": 4344999999.999999,
+  "base_portfolio_npv_usd": 1001836562.7349712,
+  "base_incremental_funding_usd": 247856292.0910914,
+  "peak_gpu_online": 39000,
+  "peak_it_load_mw": 195.0,
+  "mc_p50_npv_usd": -101430163.7878483,
+  "mc_positive_npv_probability": 0.406,
+  "best_coverage_stack": "all_equity"
+}

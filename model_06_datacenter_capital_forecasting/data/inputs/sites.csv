@@ -1,0 +1,4 @@
+site_id,site_name,region,it_load_mw,pue,total_facility_mw,target_power_ready,target_rfs,initial_gpu_count,target_gpu_count
+S01,Atlas East,Virginia,60,1.25,75,2028-01-01,2028-04-01,0,12000
+S02,Atlas Central,Texas,90,1.22,109.8,2028-07-01,2028-10-01,0,18000
+S03,Atlas West,Nevada,45,1.18,53.1,2029-01-01,2029-04-01,0,9000

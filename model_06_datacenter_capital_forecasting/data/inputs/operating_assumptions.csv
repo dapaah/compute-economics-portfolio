@@ -1,0 +1,4 @@
+site_id,price_per_gpu_hour,power_cost_per_mwh,fixed_opex_monthly,variable_opex_per_gpu_hour,utilization_at_rfs,utilization_mature,months_to_mature,gpu_ramp_months
+S01,3.50,62,4200000,0.18,0.25,0.82,18,9
+S02,3.40,48,5900000,0.17,0.22,0.85,20,12
+S03,3.65,55,3400000,0.19,0.20,0.80,16,8

@@ -1,0 +1,7 @@
+risk_factor,distribution,minimum,mode,maximum,applies_to,description
+schedule_delay_months,triangular,0,4,14,site,Combined permitting power and construction delay
+capex_multiplier,triangular,0.96,1.08,1.30,site,Total installed cost uncertainty
+utilization_multiplier,triangular,0.72,0.94,1.06,site,Commercial ramp and workload utilization
+power_cost_multiplier,triangular,0.94,1.05,1.24,site,Power price uncertainty
+price_multiplier,triangular,0.90,0.98,1.05,site,GPU-hour pricing uncertainty
+debt_rate_shift_bps,triangular,-50,100,350,portfolio,Financing market uncertainty

@@ -1,0 +1,36 @@
+model:
+  start_month: 2027-01-01
+  horizon_months: 60
+  currency: USD
+  discount_rate_annual: 0.12
+  starting_cash_usd: 150000000
+  minimum_cash_usd: 50000000
+  default_tax_rate: 0.25
+  terminal_value_multiple: 10.0
+
+scenario:
+  active: base
+  definitions:
+    base:
+      capex_multiplier: 1.00
+      schedule_delay_months: 0
+      utilization_multiplier: 1.00
+      power_cost_multiplier: 1.00
+      price_multiplier: 1.00
+    upside:
+      capex_multiplier: 0.95
+      schedule_delay_months: 0
+      utilization_multiplier: 1.08
+      power_cost_multiplier: 0.97
+      price_multiplier: 1.03
+    downside:
+      capex_multiplier: 1.15
+      schedule_delay_months: 6
+      utilization_multiplier: 0.82
+      power_cost_multiplier: 1.12
+      price_multiplier: 0.96
+
+
+risk:
+  monte_carlo_simulations: 500
+  random_seed: 42

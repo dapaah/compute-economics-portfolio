@@ -1,124 +1,130 @@
-# Compute Economics Portfolio
+# AI Infrastructure Finance Portfolio
 
-A synthetic, end-to-end model of GPU inference economics — from raw events to a
-Board-ready brief. It takes ~120,000 generated inference events, loads them into
-SQLite, and runs five models that each answer a specific question about how
-token usage, batching, caching, demand, and capacity allocation drive compute
-margin.
+A synthetic, end-to-end body of work exploring the financial architecture required to deploy AI infrastructure at scale—from product demand and GPU economics through datacenter delivery, capital allocation, financing, liquidity, risk, and executive decision support.
 
-> **Focus:** AI compute & infrastructure demand economics — unit cost, demand forecasting, capacity allocation, and margin.
-> **Data:** 100% synthetic and seeded. Zero confidentiality exposure.
+> **Portfolio thesis:** AI infrastructure finance is a connected operating system linking product demand → token demand → GPU capacity → power and datacenter requirements → deployment milestones → CapEx and OpEx → financing and liquidity → returns and executive decisions.
+>
+> **Data:** 100% synthetic, seeded, and reproducible. No confidential company information is used.
 
----
+## Start here
 
-## Headline insights
+- **[Open the executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — static, zero-install CFO view published through GitHub Pages after deployment.
+- **[Run the interactive Streamlit dashboard](model_06_datacenter_capital_forecasting/dashboard/app.py)** — scenario, site, capital-stack, liquidity, and risk exploration.
+- **[Read the executive brief](model_06_datacenter_capital_forecasting/data/outputs/dashboard/executive_brief.md)** — concise decision narrative.
+- **[Review Model 6](model_06_datacenter_capital_forecasting/README.md)** — assumptions, calculation architecture, tests, and outputs.
+- **[Review the original compute capstone](portfolio/executive_brief.pdf)** — one-page Board-ready brief for Models 1–5.
 
-_One line per model — the figures below are produced by the executed notebooks (synthetic, seeded data). These are the lines spoken to in an interview._
+## Portfolio architecture
 
-| # | Model | Headline insight |
-|---|-------|------------------|
-| 1 | **Token Economics** | **ProductC runs ~17% above** blended cost per 1K output tokens — it is *decode-bound*, not just high-volume; cost is ~75% compute / 15% overhead / 10% power. |
-| 2 | **Inference Economics** | Raising interactive batch **3 → 14 cuts cost/inference ~39%** but adds **~72 ms** latency; the margin-optimal batch under a **150 ms SLO is 16**. |
-| 3 | **Cache Modeling** | Each **+10 points of cache-hit rate cuts effective cost/inference ~11.8%** — **≈ $2.3M/yr** at a representative 1B inferences/day. |
-| 4 | **Demand Forecasting** | Demand compounds **~2.4×/yr**; fleet scales **~1,260 → ~1,985 GPUs** by Q4 (base) ≈ **$22M** capex; band ~1,770–2,200 (down/up). |
-| 5 | **Capacity Allocation** | Interactive earns **~47% more margin per GPU-second**; mix is already ~77% interactive, so further shift adds only **+1.0 margin pt** — the binding lever is **utilization toward ~85%**. |
+### Layer 1 — Compute Economics
 
-**Capstone:** the five numbers woven into one narrative — cost → cache → demand → allocation → margin.
+Five linked models connect product behavior to compute cost, capacity, and margin:
 
-📄 **One-page executive brief:** [`portfolio/executive_brief.pdf`](portfolio/executive_brief.pdf) (editable source: [`portfolio/executive_brief.docx`](portfolio/executive_brief.docx)) — the board-level artifact, no code, the five insights + integrated story + recommended decisions.
+| # | Model | Question answered | Headline insight |
+|---|---|---|---|
+| 1 | **Token Economics** | How throughput and token mix drive cost per token and margin | ProductC runs ~17% above blended cost per 1K output tokens; cost is ~75% compute / 15% overhead / 10% power. |
+| 2 | **Inference Economics** | Where latency, throughput, and margin optimize | Raising interactive batch 3 → 14 cuts cost/inference ~39% but adds ~72 ms latency; the margin-optimal batch under a 150 ms SLO is 16. |
+| 3 | **Cache Modeling** | What cache optimization is worth | Each +10 points of cache-hit rate cuts effective cost/inference ~11.8%—≈ $2.3M/yr at a representative 1B inferences/day. |
+| 4 | **Demand Forecasting** | How usage growth becomes GPU and capital requirements | Demand compounds ~2.4×/yr; fleet scales ~1,260 → ~1,985 GPUs by Q4 (base), requiring ≈ $22M of CapEx. |
+| 5 | **Capacity Allocation** | How workload mix and utilization affect margin | Interactive earns ~47% more margin per GPU-second; the binding lever is utilization toward ~85%. |
 
-> Dollar and fleet figures use one clearly-labeled scaling assumption (sample → 1B inferences/day); all **percentage** results are scale-free. Assumptions are stated at the top of each notebook.
+**Compute capstone:** cost → cache → demand → allocation → margin.
 
----
+### Layer 2 — Datacenter Capital Forecasting
+
+`model_06_datacenter_capital_forecasting/` extends the portfolio from GPU operating economics into physical infrastructure deployment and capital architecture.
+
+It connects:
+
+**Site pipeline → power and construction milestones → GPU deployment → monthly CapEx and OpEx → funding and liquidity → scenario risk → capital structure → NPV / IRR / ROIC → executive decisions.**
+
+The current prototype includes:
+
+- three synthetic datacenter sites and a 60-month monthly forecast;
+- milestone-driven construction and commissioning logic;
+- power-ready and ready-for-service gates;
+- phased GPU deployment and utilization ramps;
+- revenue, OpEx, cash flow, liquidity, NPV, IRR, and ROIC;
+- base, upside, downside, and severe-downside scenarios;
+- seeded Monte Carlo completion, cost, liquidity, and return risk;
+- five capital-stack alternatives with dilution, CADS, DSCR, debt service, and equity-return tradeoffs;
+- a static executive dashboard, Streamlit app, KPI export, and executive brief;
+- 14 automated validation tests.
+
+## Executive findings from Model 6
+
+The illustrative base case deploys **39,000 GPUs** and **195 MW** of IT load against **$4.345B** of CapEx, producing approximately **$1.00B of unlevered NPV** while requiring **$248M of incremental liquidity support**.
+
+The risk-adjusted picture is more demanding:
+
+- Monte Carlo median NPV: **$(101)M**
+- Probability of positive NPV: **40.6%**
+- Downside incremental funding need: **$634M**
+- Severe-downside incremental funding need: **$969M**
+
+The model identifies **utilization ramp** and **installed cost** as the most material value and liquidity drivers. It also shows why leverage must be sized to stabilized operating cash flow rather than construction-period equity-return optimization alone.
 
 ## How to run
 
+### Models 1–5
+
 ```bash
-# 1. install deps
-pip install -r requirements.txt
-
-# 2. generate the synthetic event table (seeded, reproducible)
-python data/generate_data.py            # -> data/events.csv
-
-# 3. load events into SQLite
-python pipeline/ingest.py               # -> data/events.db (inference_events + cost_constants)
-
-# 4. open the models in dependency order
-jupyter lab models/                     # 01 → 05, then portfolio/capstone_summary.ipynb
+python -m pip install -r requirements.txt
+python data/generate_data.py
+python pipeline/ingest.py
+jupyter lab models/
 ```
 
-The SQL each model consumes lives in [`pipeline/queries.sql`](pipeline/queries.sql) (one named, documented query per model).
+Pre-rendered notebooks are available in [`exports/`](exports).
 
-**No Jupyter?** Pre-rendered, self-contained versions of every notebook (charts embedded) are in [`exports/`](exports) as both `.html` and `.pdf` — start with [`exports/capstone_summary.pdf`](exports/capstone_summary.pdf).
+### Model 6 — full pipeline
 
----
+```bash
+cd model_06_datacenter_capital_forecasting
+python -m pip install -r requirements.txt
+python run_model.py
+python run_phase2.py
+python run_phase3.py
+python run_phase4.py
+python -m unittest discover -s tests -p 'test_*.py'
+```
+
+### Streamlit dashboard
+
+```bash
+streamlit run model_06_datacenter_capital_forecasting/dashboard/app.py
+```
 
 ## Repository structure
 
-```
+```text
 compute-economics-portfolio/
-  README.md                  ← front door: what this is, how to run, headline insights
-  requirements.txt
-  data/
-    generate_data.py         ← synthetic event generator (seeded, reproducible)
-    events.csv               ← generated event table (gitignored)
-    events.db                ← SQLite database (generated, gitignored)
-  pipeline/
-    ingest.py                ← load raw events → SQLite + cost constants
-    queries.sql              ← named aggregations feeding each model
-  models/
-    01_token_economics.ipynb
-    02_inference_economics.ipynb
-    03_cache_modeling.ipynb
-    04_demand_forecasting.ipynb
-    05_capacity_allocation.ipynb
-  portfolio/
-    capstone_summary.ipynb   ← integrates one headline result from each model
-    executive_brief.pdf      ← one-page board-level brief (rendered)
-    executive_brief.docx     ← editable source of the brief
-  exports/                   ← pre-rendered .html + .pdf of every notebook (charts embedded)
+├── README.md
+├── requirements.txt
+├── data/                         # synthetic inference-event generator
+├── pipeline/                     # SQLite ingestion and named SQL queries
+├── models/                       # Models 1–5 notebooks
+├── portfolio/                    # compute-economics capstone and brief
+├── exports/                      # pre-rendered notebook HTML/PDF
+├── model_06_datacenter_capital_forecasting/
+│   ├── config/
+│   ├── data/inputs/
+│   ├── data/outputs/
+│   ├── dashboard/
+│   ├── docs/
+│   ├── src/
+│   ├── tests/
+│   └── run_phase*.py
+└── docs/                         # GitHub Pages static executive dashboard
 ```
 
-Each model notebook contains three things: **(1) inputs & assumptions, (2) working code with visible output, (3) a written insight** stating what the model reveals.
+## Evidence and confidentiality standard
 
----
+Every public claim is traceable to executed code, a visible synthetic input, an output table, a chart, or an executive brief. Modeled decisions are not represented as realized operating outcomes. Synthetic assumptions are labeled throughout.
 
-## The data: `inference_events`
+## Deployment
 
-~120,000 GPU inference events over a ~12-month window. Distributions are
-engineered (not random noise) so the models surface real effects — an upward
-demand trend with weekly seasonality, a ~20–40% cache-hit band, and a 65–85%
-utilization band.
+- **GitHub Pages:** publish the `/docs` folder from the `main` branch. The generated dashboard is already copied to `docs/index.html`.
+- **Streamlit Community Cloud:** select this repository and use `model_06_datacenter_capital_forecasting/dashboard/app.py` as the entry point.
 
-| Column | Description |
-|--------|-------------|
-| `event_id` | Unique sequential integer |
-| `timestamp` | Event time; engineered upward demand trend + weekly seasonality |
-| `product` | ProductA–E — enables per-product margin |
-| `workload_type` | `interactive` (latency-sensitive) vs `batch` (throughput-tolerant) |
-| `gpu_type` | H100 / H200 / B200 — different cost & throughput profiles |
-| `tokens_input` | Prompt tokens |
-| `tokens_output` | Completion tokens (the expensive ones) |
-| `latency_ms` | Inversely related to batch size; interactive tighter |
-| `batch_size` | Higher batch = better throughput, worse latency (core tradeoff) |
-| `cache_hit` | Boolean; ~20–40% hit rate, higher for repeat-heavy products |
-| `gpu_seconds` | Compute consumed — the basis for cost |
-| `utilization_pct` | GPU utilization at event time (65–85% band) |
-
-**Cost basis** (in `cost_constants`, set in [`pipeline/ingest.py`](pipeline/ingest.py)):
-GPU hourly cost by `gpu_type`, fixed power cost per GPU-hour (take-or-pay), and a
-blendable $/GPU-second. These turn `gpu_seconds` into cost and let every model
-compute margin.
-
----
-
-## Models → Questions Answered
-
-| Model | Question it answers |
-|-------|---------------------|
-| 1 Token Economics | How throughput and token mix drive cost per token and margin |
-| 2 Inference Economics | The latency–throughput–cost tradeoff and where margin optimizes |
-| 3 Cache Modeling | The ROI of cache optimization on effective cost per inference |
-| 4 Demand Forecasting | How usage growth translates into compute and capital requirements |
-| 5 Capacity Allocation | How to optimize utilization against margin across workloads |
-| Capstone | How the five models integrate into an executive decision view |
+The GitHub Pages URL in this README assumes the repository remains named `compute-economics-portfolio` under the `dapaah` account. Update the link if the repository owner or name changes.

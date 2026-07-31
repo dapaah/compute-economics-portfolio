@@ -1,0 +1,5 @@
+scenario,capex_multiplier,schedule_delay_months,utilization_multiplier,power_cost_multiplier,price_multiplier,debt_rate_shift_bps,description
+base,1.00,0,1.00,1.00,1.00,0,Management base case
+upside,0.95,0,1.08,0.97,1.03,-50,Faster ramp and modest cost outperformance
+downside,1.15,6,0.82,1.12,0.96,150,Power and construction delay with slower utilization
+severe_downside,1.28,12,0.68,1.22,0.91,300,Combined delivery funding and commercial stress
