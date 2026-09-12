@@ -2,7 +2,7 @@
 
 Demand, deliverable capacity, deployment strategy, pricing, and the capital case behind build-ahead.
 
-This repository is a public practice ground for the planning problem faced by capital-intensive AI infrastructure operators:
+This repository is a public research and decision-systems portfolio focused on the planning problem faced by capital-intensive AI infrastructure operators:
 
 **how much demand is real → how much capacity can actually be energized, made ready, and occupied → which deployment path should be funded → what pricing and capital case finance can defend.**
 
@@ -127,7 +127,7 @@ python run_phase4.py
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-## What this repository is
+## What this repository demonstrates
 
 This is not a claim of prior datacenter operating ownership.
 
