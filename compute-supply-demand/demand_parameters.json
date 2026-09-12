@@ -1,0 +1,547 @@
+{
+  "_meta": {
+    "title": "AI Compute Demand-Side TAM Parameters",
+    "compiled": "2026-09-07",
+    "principle": "Four evidence classes: observed = source-reported historical measurement (verification separate); derived = arithmetic; calibrated = chosen using an output target; assumption = judgment, extrapolation or reported forecast. Primary and secondary sources are mixed. Inherited claims are unverified except where explicitly marked.",
+    "structure": "Capital scenario, funding shares and merchant allocation. Neither direct chip shipments nor end-customer consumption is measured.",
+    "known_definitional_conflicts": [
+      "Inherited neocloud revenue claims have incompatible populations and dates; retained as context only, never reconciled into a demand total.",
+      "Inference share of compute: ~55% of AI INFRASTRUCTURE SPENDING in early 2026 vs Deloitte's ~two-thirds of all AI COMPUTING. Different denominators — dollars vs cycles. Not interchangeable.",
+      "Hyperscaler capex: $602B (five largest, CreditSights) vs $600-690B (big four plus ancillary infrastructure). Scope differs on both company count and what counts as ancillary."
+    ]
+  },
+  "capital_deployed": {
+    "hyperscaler_capex_2026_usd_bn": {
+      "value": 602.0,
+      "kind": "assumption",
+      "source": "CreditSights via Global Data Center Hub",
+      "date": "2026-01",
+      "url": "https://www.globaldatacenterhub.com/p/us-data-center-infrastructure-the",
+      "note": "Five largest hyperscalers, up 36% YoY.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "hyperscaler_ai_tied_share": {
+      "value": 0.75,
+      "kind": "assumption",
+      "source": "CreditSights",
+      "date": "2026-01",
+      "url": "https://www.globaldatacenterhub.com/p/us-data-center-infrastructure-the",
+      "note": "Roughly $450B of the $602B is AI-tied. The remainder is general cloud and should not be converted into AI capacity.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "hyperscaler_capex_upper_with_ancillary_usd_bn": {
+      "value": 670.0,
+      "kind": "assumption",
+      "source": "Trackers cited by AgentMarketCap",
+      "date": "2026-04",
+      "url": "https://agentmarketcap.ai/blog/2026/04/17/ai-inference-overtakes-training-two-thirds-2026-compute",
+      "note": "Big four north of $600B, some trackers $650-690B including ancillary infrastructure. Midpoint used. Scope differs from the CreditSights figure; do not treat as an upward revision of the same number.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "memory_share_of_hyperscaler_ai_spend": {
+      "value": 0.3,
+      "kind": "observed",
+      "source": "AgentMarketCap synthesis",
+      "date": "2026-04",
+      "url": "https://agentmarketcap.ai/blog/2026/04/17/ai-inference-overtakes-training-two-thirds-2026-compute",
+      "note": "Fourfold jump from 2023, because inference is memory-bandwidth bound in ways training is not. A composition signal for the training-to-inference shift, visible in the bill of materials.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "buyer_segments": {
+    "_note": "Who funds AI capacity; these are not accelerator purchase or shipment shares.",
+    "hyperscaler_share": {
+      "value": 0.72,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION. Derived residually: hyperscaler AI capex ~$450B against neocloud and other capital deployment. Sensitivity 0.62-0.80.",
+      "evidence_type": "model_judgment"
+    },
+    "neocloud_share": {
+      "value": 0.16,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION, anchored on observed neocloud contracted power and financing scale rather than on revenue. Neoclouds deploy capital far ahead of revenue, so a revenue-based share would understate their chip buying materially.",
+      "evidence_type": "model_judgment"
+    },
+    "enterprise_and_sovereign_share": {
+      "value": 0.12,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION. Enterprise self-build plus sovereign programmes. The weakest-evidenced segment in the model.",
+      "evidence_type": "model_judgment"
+    }
+  },
+  "neocloud": {
+    "revenue_2025_usd_bn": {
+      "value": 25.0,
+      "kind": "observed",
+      "source": "ModulEdge synthesis of company filings",
+      "date": "2026-06",
+      "url": "https://www.moduledge.com/blog/neocloud",
+      "note": "Q4 2025 alone reached $9B, up 223% YoY. See definitional conflict note in _meta.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "revenue_2030_forecast_usd_bn": {
+      "value": 180.0,
+      "kind": "assumption",
+      "source": "Synergy Research",
+      "date": "2026-06",
+      "url": "https://www.moduledge.com/blog/neocloud",
+      "note": "Approaching $400B by 2031, implying roughly 58% CAGR. A forecast, not an observation of the market.",
+      "evidence_type": "reported_forecast_or_scenario_not_realized"
+    },
+    "coreweave_fy2026_revenue_guide_usd_bn": {
+      "value": 12.8,
+      "kind": "assumption",
+      "source": "CoreWeave Q2 2026 release",
+      "date": "2026-08",
+      "url": "https://www.marktechpost.com/2026/08/23/best-gpu-neoclouds-2026/",
+      "note": "Guidance range $12.4-13.2B; midpoint used.",
+      "evidence_type": "reported_forecast_or_scenario_not_realized"
+    },
+    "coreweave_active_power_gw": {
+      "value": 1.5,
+      "kind": "observed",
+      "source": "CoreWeave Q2 2026, as of 30 June",
+      "date": "2026-06-30",
+      "url": "https://www.marktechpost.com/2026/08/23/best-gpu-neoclouds-2026/",
+      "note": "Contracted power roughly 3.7-4.2 GW across 51 data centers. Active power is the revenue-bearing figure.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "coreweave_backlog_usd_bn": {
+      "value": 104.0,
+      "kind": "observed",
+      "source": "CoreWeave Q2 2026",
+      "date": "2026-08",
+      "url": "https://exoswan.com/neocloud-stocks",
+      "note": "Remaining performance obligations. Roughly eight years of revenue at the current guide, which is why backlog is the promise and debt is the fact.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "coreweave_take_or_pay_share": {
+      "value": 0.96,
+      "kind": "observed",
+      "source": "CoreWeave disclosure via Luminix",
+      "date": "2026-06",
+      "url": "https://www.useluminix.com/reports/industry-analysis/deep-dive-on-the-neocloud-gpu-rental-industry-coreweave-lambda-crusoe",
+      "note": "Contracts are 2-5 year take-or-pay. Customers pay regardless of usage, which decouples PROVIDER revenue from CONSUMER utilization. Central to the model: booked demand is contractual, not consumptive.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "customer_concentration_top3": {
+      "value": 0.8,
+      "kind": "observed",
+      "source": "Analyst estimates via Luminix",
+      "date": "2026-06",
+      "url": "https://www.useluminix.com/reports/industry-analysis/deep-dive-on-the-neocloud-gpu-rental-industry-coreweave-lambda-crusoe",
+      "note": "Microsoft was 67% of CoreWeave 2025 revenue. Top three expected to remain above 80% even after diversification.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "nebius_arr_usd_bn": {
+      "value": 3.0,
+      "kind": "observed",
+      "source": "Nebius disclosure",
+      "date": "2026-08",
+      "url": "https://www.marktechpost.com/2026/08/23/best-gpu-neoclouds-2026/",
+      "note": "Targeting $7-9B ARR by end-2026.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "unit_economics": {
+    "revenue_per_gw_year_usd_bn": {
+      "value": 8.5,
+      "kind": "assumption",
+      "source": "Derived from CoreWeave FY2026 revenue guide over active power",
+      "date": "2026-08",
+      "url": "https://www.marktechpost.com/2026/08/23/best-gpu-neoclouds-2026/",
+      "note": "Illustrative $8.5bn per occupied GW-year proxy, loosely based on FY guidance divided by a point-in-time active-power figure. Periods differ. Not a realized yield, contracted revenue forecast, or evidence that energization means consumption.",
+      "evidence_type": "model_judgment"
+    },
+    "capex_per_gw_usd_bn": {
+      "value": 35.0,
+      "kind": "calibrated",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "Calibrated in the original module partly to a supply-output comparison. Retained at $35bn/GW without retuning. That comparison was not independent and its delivery benchmark was stock, so no validation claim remains.",
+      "evidence_type": "model_judgment"
+    },
+    "coreweave_h100_gpu_hour_usd": {
+      "value": 6.16,
+      "kind": "observed",
+      "source": "Published rate card via MarkTechPost",
+      "date": "2026-08",
+      "url": "https://www.marktechpost.com/2026/08/23/best-gpu-neoclouds-2026/",
+      "note": "Roughly 60% above Nebius and Lambda published rates. SemiAnalysis puts the premium at 10-15% on a like-for-like basis, so the headline gap overstates it.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "breakeven_utilization": {
+      "value": 0.7,
+      "kind": "assumption",
+      "source": "Analyst estimate via Luminix",
+      "date": "2026-06",
+      "url": "https://www.useluminix.com/reports/industry-analysis/deep-dive-on-the-neocloud-gpu-rental-industry-coreweave-lambda-crusoe",
+      "note": "Inherited illustrative estimate, not an operator disclosure or explanation of contracting choices. Context only.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    }
+  },
+  "consumption": {
+    "_note": "Who is CONSUMING COMPUTE. Different population from the chip buyers above.",
+    "inference_share_of_infra_spend_2026": {
+      "value": 0.55,
+      "kind": "assumption",
+      "source": "Presenc AI synthesis",
+      "date": "2026-07",
+      "url": "https://presenc.ai/research/inference-vs-training-compute-split-2026",
+      "note": "Up from about 33% in 2023. Denominator is infrastructure SPENDING.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "inference_share_of_compute_cycles_2026": {
+      "value": 0.67,
+      "kind": "assumption",
+      "source": "Deloitte via Presenc AI",
+      "date": "2026-07",
+      "url": "https://presenc.ai/research/inference-vs-training-compute-split-2026",
+      "note": "Denominator is compute CYCLES. Not the same as the spend measure above and must not be substituted for it.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "inference_share_of_lifecycle_dollars": {
+      "value": 0.85,
+      "kind": "assumption",
+      "source": "Industry analyses via Presenc AI",
+      "date": "2026-07",
+      "url": "https://presenc.ai/research/inference-vs-training-compute-split-2026",
+      "note": "Inherited midpoint of an 80–90% lifecycle spending estimate. Context only; not a measured GW allocation.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "gartner_ai_cloud_market_2026_usd_bn": {
+      "value": 42.0,
+      "kind": "assumption",
+      "source": "Gartner via TechTimes",
+      "date": "2026-08",
+      "url": "https://www.techtimes.com/articles/323879/20260811/gartner-marks-first-year-inference-spending-beats-ai-training-55-cents-every-cloud-dollar.htm",
+      "note": "AI-optimized infrastructure spending, roughly 15% of a $287.3B IaaS market. Inference claims $23.3B of it — the first year inference beats training.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "agentic_token_multiplier_low": {
+      "value": 5.0,
+      "kind": "observed",
+      "source": "Gartner",
+      "date": "2026-03",
+      "url": "https://www.techtimes.com/articles/323879/20260811/gartner-marks-first-year-inference-spending-beats-ai-training-55-cents-every-cloud-dollar.htm",
+      "note": "Tokens per task versus a standard chatbot interaction.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "agentic_token_multiplier_high": {
+      "value": 30.0,
+      "kind": "observed",
+      "source": "Gartner",
+      "date": "2026-03",
+      "url": "https://www.techtimes.com/articles/323879/20260811/gartner-marks-first-year-inference-spending-beats-ai-training-55-cents-every-cloud-dollar.htm",
+      "note": "Each task fans out into reasoning steps, tool calls and retries.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cost_per_interaction_linear_usd": {
+      "value": 0.04,
+      "kind": "observed",
+      "source": "EY enterprise AI cost analysis",
+      "date": "2026",
+      "url": "https://www.techtimes.com/articles/323879/20260811/gartner-marks-first-year-inference-spending-beats-ai-training-55-cents-every-cloud-dollar.htm",
+      "note": "The 2023-style linear workflow.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cost_per_interaction_agentic_usd": {
+      "value": 1.2,
+      "kind": "observed",
+      "source": "EY enterprise AI cost analysis",
+      "date": "2026",
+      "url": "https://www.techtimes.com/articles/323879/20260811/gartner-marks-first-year-inference-spending-beats-ai-training-55-cents-every-cloud-dollar.htm",
+      "note": "Roughly 30x the linear workflow. Per-token price fell; tokens per transaction exploded.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "token_price_decline_2yr_factor": {
+      "value": 280.0,
+      "kind": "observed",
+      "source": "Stanford HAI AI Index via Telnyx",
+      "date": "2026-07",
+      "url": "https://telnyx.com/resources/ai-training-vs-inference",
+      "note": "GPT-3.5-equivalent MMLU query cost fell from $20.00 to roughly $0.07 per million tokens over about two years.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "enterprise_spend_growth_same_period": {
+      "value": 3.2,
+      "kind": "observed",
+      "source": "ComputeLeap synthesis",
+      "date": "2026-06",
+      "url": "https://www.computeleap.com/blog/ai-token-economics-subsidy-clock-use-llm-less-2026/",
+      "note": "Inherited 3.2x multiplier retained as context. Original 'rose 320%' wording conflicts (would imply 4.2x); no causal capacity-pricing inference is used.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "avg_enterprise_ai_budget_2026_usd_m": {
+      "value": 7.0,
+      "kind": "observed",
+      "source": "ComputeLeap synthesis",
+      "date": "2026-06",
+      "url": "https://www.computeleap.com/blog/ai-token-economics-subsidy-clock-use-llm-less-2026/",
+      "note": "Up from $1.2M in 2024.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "inference_share_of_enterprise_budget": {
+      "value": 0.85,
+      "kind": "observed",
+      "source": "ComputeLeap synthesis",
+      "date": "2026-06",
+      "url": "https://www.computeleap.com/blog/ai-token-economics-subsidy-clock-use-llm-less-2026/",
+      "note": "Up from 40% in 2023.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "deployment_mode": {
+    "_note": "The bridge between chip buyers and compute consumers. Determines who owns capacity and who captures margin.",
+    "hyperscaler_self_consumed_share": {
+      "value": 0.6,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION. Share of hyperscaler-bought capacity consumed internally rather than resold. The remainder is sold as cloud, which makes hyperscalers both buyers and landlords.",
+      "evidence_type": "model_judgment"
+    },
+    "neocloud_resold_share": {
+      "value": 1.0,
+      "kind": "assumption",
+      "source": "SemiAnalysis category definition via ModulEdge",
+      "date": "2026-06",
+      "url": "https://www.moduledge.com/blog/neocloud",
+      "note": "Stylized assumption that all neocloud capacity is resold. Does not establish actual utilization.",
+      "evidence_type": "inherited_estimate_or_forecast_not_realized"
+    },
+    "hyperscalers_renting_from_neoclouds": {
+      "value": true,
+      "kind": "observed",
+      "source": "Microsoft $60B+ in neocloud commitments; Meta up to $62B across CoreWeave and Nebius",
+      "date": "2026-07",
+      "url": "https://datastorage.com/articles/top-10-neocloud-providers-of-2026-ranked/",
+      "note": "The flow is not one-directional. Hyperscalers buy chips AND rent capacity, because they cannot build fast enough. This is the demand-side reflection of the supply module's delivery constraint.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "enterprise_merchant_share": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Assume enterprise/sovereign self-build is outside merchant demand; expose the formerly implicit exclusion.",
+      "evidence_type": "model_judgment"
+    }
+  },
+  "model": {
+    "reference_year": {
+      "value": 2026,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Fixed forecast origin.",
+      "evidence_type": "model_judgment"
+    },
+    "us_capacity_share": {
+      "value": 0.7,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Illustrative US share of company-wide capex-implied capacity; geographic bridge, not a measured share.",
+      "evidence_type": "model_judgment"
+    },
+    "merchant_supply_share": {
+      "value": 0.45,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Independent supply ownership assumption, not mechanically copied from demand shares.",
+      "evidence_type": "model_judgment"
+    },
+    "demand_growth": {
+      "value": 1.1,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Annual US merchant capacity requirement multiplier.",
+      "evidence_type": "reported_forecast_or_scenario_not_realized"
+    },
+    "live_load_weights": {
+      "value": [
+        0.5,
+        0.5
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Weights for energized capacity becoming ready for occupancy, lag 0 and 1. Readiness is not actual IT electricity consumption; matched demand determines modeled occupation.",
+      "evidence_type": "model_judgment"
+    },
+    "capacity_required_weights": {
+      "value": [
+        0.5,
+        0.5
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Capex cohort to requested-service year allocation, lag 0 and 1; independent of energized ramp.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_merchant_capex_gw": {
+      "value": {
+        "2025": 4.0
+      },
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Illustrative US merchant capex-implied cohort before forecast start; supplies the opening requested-service tail.",
+      "evidence_type": "model_judgment"
+    },
+    "horizon_years": {
+      "value": 8,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Default reporting horizon; origin stored separately.",
+      "evidence_type": "model_judgment"
+    },
+    "h1_annualization_factor": {
+      "value": 2,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Assume H2 equals H1 to initialize signing flow, not delivery-year demand.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_demand_backlog_gw": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Unmet service requested before origin excluded; explicit initial balance.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_ready_capacity_gw": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "No spare capacity from pre-origin energizations. This is an incremental model.",
+      "evidence_type": "model_judgment"
+    },
+    "existing_occupied_capacity_gw": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Existing fleet excluded; all occupied totals track incremental cohorts only.",
+      "evidence_type": "model_judgment"
+    },
+    "cancellation_rate": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "No cancellation implemented; nonzero value rejected rather than silently ignored.",
+      "evidence_type": "model_judgment"
+    },
+    "retirement_rate": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "No retirement implemented; nonzero value rejected rather than silently ignored.",
+      "evidence_type": "model_judgment"
+    },
+    "capex_sensitivity": {
+      "value": [
+        25,
+        35,
+        50
+      ],
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Cost per GW scenarios; preserve contrary outcomes.",
+      "evidence_type": "model_judgment"
+    },
+    "geography_sensitivity": {
+      "value": [
+        0.5,
+        0.7,
+        0.9
+      ],
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "US share scenarios, not a confidence interval.",
+      "evidence_type": "model_judgment"
+    }
+  },
+  "customer_segment_mix": {
+    "_note": "Funding ownership shares, not end-consumer or chip-shipment shares. All paths are assumptions. Annual interpolation is derived arithmetic; no path is calibrated to supply or to a preferred conclusion.",
+    "end_year": {
+      "value": 2033,
+      "kind": "assumption",
+      "source": "Explicit scenario design; no external observation",
+      "date": "2026-09-10",
+      "url": null,
+      "note": "Last supported year. Do not silently extrapolate.",
+      "evidence_type": "model_judgment"
+    },
+    "terminal_shares": {
+      "value": {
+        "base": [
+          0.68,
+          0.18,
+          0.14
+        ],
+        "hyperscaler-heavy": [
+          0.82,
+          0.1,
+          0.08
+        ],
+        "neocloud-growth": [
+          0.58,
+          0.3,
+          0.12
+        ],
+        "enterprise-sovereign-growth": [
+          0.58,
+          0.16,
+          0.26
+        ]
+      },
+      "kind": "assumption",
+      "source": "Explicit scenario design; no external observation",
+      "date": "2026-09-10",
+      "url": null,
+      "note": "Order: hyperscaler, neocloud, enterprise/sovereign. Linear paths from registered 2026 shares. Base represents modest diversification; alternatives stress ownership concentration, resale growth, and self-build growth. Magnitudes are illustrative judgments, not estimates, probabilities or fitted outputs. static-control holds opening shares throughout.",
+      "evidence_type": "model_judgment"
+    }
+  }
+}

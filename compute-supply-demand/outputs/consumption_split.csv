@@ -1,0 +1,4 @@
+measure,denominator,inference_share,training_share,inference_gw_equiv
+Infrastructure spending,dollars,0.55,0.44999999999999996,
+Compute cycles,cycles,0.67,0.32999999999999996,
+Model lifecycle dollars,dollars over model life,0.85,0.15000000000000002,

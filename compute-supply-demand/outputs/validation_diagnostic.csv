@@ -1,0 +1,2 @@
+model_year,modelled_energized_additions_gw,rejected_benchmark_gw,status,reason
+2026,11.287500000000293,9.432,No compatible annual US delivery observation; no historical accuracy claim,"9.432 GW is CBRE primary-market inventory stock, not annual US delivery"

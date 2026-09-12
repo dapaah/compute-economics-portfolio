@@ -1,87 +1,56 @@
 # AI Infrastructure Finance Portfolio
 
-A synthetic, end-to-end body of work exploring the financial architecture required to deploy AI infrastructure at scale—from product demand and GPU economics through datacenter delivery, capital allocation, financing, liquidity, risk, and executive decision support.
+Demand, deliverable capacity, deployment mix, and the financial case behind build-ahead.
 
-> **Portfolio thesis:** AI infrastructure finance is a connected operating system linking product demand → token demand → GPU capacity → power and datacenter requirements → deployment milestones → CapEx and OpEx → financing and liquidity → returns and executive decisions.
->
-> **Data:** 100% synthetic, seeded, and reproducible. No confidential company information is used.
+This repository is a public practice ground for the planning problem a vertically integrated AI infrastructure company actually faces:
+
+**how much demand is signed → how much capacity can be energized, made ready, and occupied → which mix of colo / owned / modular to fund → what price and capital case finance can defend.**
+
+> **Data standard.** Models 1–6 use seeded synthetic data. The compute supply-demand module mixes inherited public reporting with explicit assumptions. No confidential company information is used. Modeled outputs are not operating results and are not a Crusoe forecast.
 
 ## Start here
 
-[Open Executive Dashboard](https://dapaah.github.io/compute-economics-portfolio/)
+Planning pages first. Token notebooks last.
 
-[Launch Interactive CFO Dashboard](https://ai-infrastructure-finance.streamlit.app/)
+1. **[Deployment mix](portfolio/deployment_mix_recommendation.md)** — colo vs. owned campus vs. modular (Spark-class) by buyer segment. What funds, what waits.
+2. **[Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md)** — signed / reserved / verbal × the same three modes. Verbal is a forecast line, not a capital object.
+3. **[Pricing forecast method](portfolio/pricing_forecast_method_stub.md)** — four price units; tightness, ramp, and constraint as named signals; MAPE and bias with a driver split. No invented rate card.
+4. **[Compute supply and requested-service demand](compute-supply-demand/README.md)** — announced MW versus deliverable IT capacity; bookings vs. merchant-capital lenses; segment mix. Open `compute-supply-demand/deliverable_capacity.html` locally.
+5. **[Demand-planning brief](portfolio/demand_planning_brief.md)** — what the public model will and will not claim.
+6. **[Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md)** — site pipeline → power and construction gates → GPU deployment → CapEx, liquidity, scenarios.
+7. **[Static executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — GitHub Pages view of Model 6.
+8. **Models 1–5** — token, inference, cache, usage-to-GPU, and allocation economics. Product-margin machinery. Not the primary planning artifact.
 
-- **[Open the executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — static, zero-install CFO view published through GitHub Pages after deployment.
-- **[Run the interactive Streamlit dashboard](model_06_datacenter_capital_forecasting/dashboard/app.py)** — scenario, site, capital-stack, liquidity, and risk exploration.
-- **[Read the executive brief](model_06_datacenter_capital_forecasting/data/outputs/dashboard/executive_brief.md)** — concise decision narrative.
-- **[Review Model 6](model_06_datacenter_capital_forecasting/README.md)** — assumptions, calculation architecture, tests, and outputs.
-- **[Review the original compute capstone](portfolio/executive_brief.pdf)** — one-page Board-ready brief for Models 1–5.
+## What maps to a demand-planning and market-economics seat
 
-## Portfolio architecture
-
-### Layer 1 — Compute Economics
-
-Five linked models connect product behavior to compute cost, capacity, and margin:
-
-| # | Model | Question answered | Headline insight |
-|---|---|---|---|
-| 1 | **Token Economics** | How throughput and token mix drive cost per token and margin | ProductC runs ~17% above blended cost per 1K output tokens; cost is ~75% compute / 15% overhead / 10% power. |
-| 2 | **Inference Economics** | Where latency, throughput, and margin optimize | Raising interactive batch 3 → 14 cuts cost/inference ~39% but adds ~72 ms latency; the margin-optimal batch under a 150 ms SLO is 16. |
-| 3 | **Cache Modeling** | What cache optimization is worth | Each +10 points of cache-hit rate cuts effective cost/inference ~11.8%—≈ $2.3M/yr at a representative 1B inferences/day. |
-| 4 | **Demand Forecasting** | How usage growth becomes GPU and capital requirements | Demand compounds ~2.4×/yr; fleet scales ~1,260 → ~1,985 GPUs by Q4 (base), requiring ≈ $22M of CapEx. |
-| 5 | **Capacity Allocation** | How workload mix and utilization affect margin | Interactive earns ~47% more margin per GPU-second; the binding lever is utilization toward ~85%. |
-
-**Compute capstone:** cost → cache → demand → allocation → margin.
-
-### Layer 2 — Datacenter Capital Forecasting
-
-`model_06_datacenter_capital_forecasting/` extends the portfolio from GPU operating economics into physical infrastructure deployment and capital architecture.
-
-It connects:
-
-**Site pipeline → power and construction milestones → GPU deployment → monthly CapEx and OpEx → funding and liquidity → scenario risk → capital structure → NPV / IRR / ROIC → executive decisions.**
-
-The current prototype includes:
-
-- three synthetic datacenter sites and a 60-month monthly forecast;
-- milestone-driven construction and commissioning logic;
-- power-ready and ready-for-service gates;
-- phased GPU deployment and utilization ramps;
-- revenue, OpEx, cash flow, liquidity, NPV, IRR, and ROIC;
-- base, upside, downside, and severe-downside scenarios;
-- seeded Monte Carlo completion, cost, liquidity, and return risk;
-- five capital-stack alternatives with dilution, CADS, DSCR, debt service, and equity-return tradeoffs;
-- a static executive dashboard, Streamlit app, KPI export, and executive brief;
-- 14 automated validation tests.
-
-## Executive findings from Model 6
-
-The illustrative base case deploys **39,000 GPUs** and **195 MW** of IT load against **$4.345B** of CapEx, producing approximately **$1.00B of unlevered NPV** while requiring **$248M of incremental liquidity support**.
-
-The risk-adjusted picture is more demanding:
-
-- Monte Carlo median NPV: **$(101)M**
-- Probability of positive NPV: **40.6%**
-- Downside incremental funding need: **$634M**
-- Severe-downside incremental funding need: **$969M**
-
-The model identifies **utilization ramp** and **installed cost** as the most material value and liquidity drivers. It also shows why leverage must be sized to stabilized operating cash flow rather than construction-period equity-return optimization alone.
+| Planning question | Where it lives | What is not claimed |
+|---|---|---|
+| Which deployment mix should we fund by segment? | `portfolio/deployment_mix_recommendation.md` | A Crusoe site list |
+| When is build-ahead justified vs. wait for a signature? | `portfolio/build_ahead_vs_build_to_order.md` | A live bookings file |
+| How is the canonical price set and scored? | `portfolio/pricing_forecast_method_stub.md` | A 2027 $/GPU-hr |
+| Who is buying compute, and how is the mix shifting? | `compute-supply-demand/` segment-mix paths | Observed customer contracts |
+| Is announced data-center and power supply actually deliverable? | `compute-supply-demand/` announcement → energized / ready / occupied | A measured industry shortage |
+| What financial case sits behind a site? | Model 6 | A live campus portfolio |
 
 ## How to run
-
-### Models 1–5
 
 ```bash
 python -m pip install -r requirements.txt
 python data/generate_data.py
 python pipeline/ingest.py
-jupyter lab models/
 ```
 
-Pre-rendered notebooks are available in [`exports/`](exports).
+Supply-demand module:
 
-### Model 6 — full pipeline
+```bash
+cd compute-supply-demand
+python run_scenarios.py
+python run_demand.py
+python build_dashboard.py
+python -m unittest discover -s tests -v
+```
+
+Model 6:
 
 ```bash
 cd model_06_datacenter_capital_forecasting
@@ -90,45 +59,9 @@ python run_model.py
 python run_phase2.py
 python run_phase3.py
 python run_phase4.py
-python -m unittest discover -s tests -p 'test_*.py'
+python -m unittest discover -s tests -p "test_*.py"
 ```
 
-### Streamlit dashboard
+## Evidence standard
 
-```bash
-streamlit run model_06_datacenter_capital_forecasting/dashboard/app.py
-```
-
-## Repository structure
-
-```text
-compute-economics-portfolio/
-├── README.md
-├── requirements.txt
-├── data/                         # synthetic inference-event generator
-├── pipeline/                     # SQLite ingestion and named SQL queries
-├── models/                       # Models 1–5 notebooks
-├── portfolio/                    # compute-economics capstone and brief
-├── exports/                      # pre-rendered notebook HTML/PDF
-├── model_06_datacenter_capital_forecasting/
-│   ├── config/
-│   ├── data/inputs/
-│   ├── data/outputs/
-│   ├── dashboard/
-│   ├── docs/
-│   ├── src/
-│   ├── tests/
-│   └── run_phase*.py
-└── docs/                         # GitHub Pages static executive dashboard
-```
-
-## Evidence and confidentiality standard
-
-Every public claim is traceable to executed code, a visible synthetic input, an output table, a chart, or an executive brief. Modeled decisions are not represented as realized operating outcomes. Synthetic assumptions are labeled throughout.
-
-## Deployment
-
-- **GitHub Pages:** publish the `/docs` folder from the `main` branch. The generated dashboard is already copied to `docs/index.html`.
-- **Streamlit Community Cloud:** select this repository and use `model_06_datacenter_capital_forecasting/dashboard/app.py` as the entry point.
-
-The GitHub Pages URL in this README assumes the repository remains named `compute-economics-portfolio` under the `dapaah` account. Update the link if the repository owner or name changes.
+Every public claim should trace to executed code, a labeled input, an output table, a chart, or an executive brief. Parameters are classified as observed, derived, calibrated, or assumed. Contrary outputs are retained. No parameter is optimized to force a shortage thesis. The three planning pages are methods. They are not Crusoe operating results.

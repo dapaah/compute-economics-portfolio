@@ -1,0 +1,810 @@
+{
+  "_meta": {
+    "title": "AI Compute Supply-Side Constraint Parameters",
+    "compiled": "2026-09-07",
+    "principle": "Four evidence classes: observed = source-reported historical measurement (verification separate); derived = arithmetic; calibrated = chosen using an output target; assumption = judgment, extrapolation or reported forecast. Primary and secondary sources are mixed. Inherited claims are unverified except where explicitly marked.",
+    "units": "Capacity in GW of critical IT load unless stated. Lead times in months.",
+    "known_definitional_conflict": "North America signed bookings are bridged to US by an assumed share and allocated to requested-service years. CBRE occupancy is context only. Company-wide AI capex is a separate demand lens; these series are never summed."
+  },
+  "pipeline": {
+    "us_disclosed_pipeline_gw": {
+      "value": 241.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie via Avanza Energy",
+      "date": "2026-03",
+      "url": "https://avanzaenergy.substack.com/p/record-demand-declining-construction",
+      "note": "Total disclosed US data center pipeline.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "share_under_active_development": {
+      "value": 0.33,
+      "kind": "observed",
+      "source": "Wood Mackenzie",
+      "date": "2026-03",
+      "url": "https://avanzaenergy.substack.com/p/record-demand-declining-construction",
+      "note": "Inherited pipeline snapshot share. Applying it as a cohort conversion gate is a modeling proxy, not an observed lifetime conversion probability.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "sightline_2026_announced_gw": {
+      "value": 16.0,
+      "kind": "observed",
+      "source": "Sightline Climate via Bloomberg",
+      "date": "2026-05",
+      "url": "https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/",
+      "note": "Capacity announced for 2026 delivery.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "sightline_2026_under_construction_gw": {
+      "value": 5.0,
+      "kind": "observed",
+      "source": "Sightline Climate via Bloomberg",
+      "date": "2026-05",
+      "url": "https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/",
+      "note": "Implies a 31% announced-to-construction rate for the near-dated cohort, consistent with the Wood Mackenzie 33%.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "delay_or_cancel_rate_low": {
+      "value": 0.3,
+      "kind": "assumption",
+      "source": "Sightline Climate",
+      "date": "2026-05",
+      "url": "https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/",
+      "note": "Low end of expected 2026 delay/cancellation range.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "delay_or_cancel_rate_high": {
+      "value": 0.5,
+      "kind": "assumption",
+      "source": "Sightline Climate",
+      "date": "2026-05",
+      "url": "https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/",
+      "note": "High end.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "quarterly_pipeline_additions_q4_2025_gw": {
+      "value": 25.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie via Avanza Energy",
+      "date": "2026-03",
+      "url": "https://avanzaenergy.substack.com/p/record-demand-declining-construction",
+      "note": "New pipeline additions in Q4 2025, down 50% from ~50 GW in Q3 2025. Annualises to ~100 GW/yr of fresh announcements. Used as the ongoing announcement FLOW; the 241 GW disclosed figure is the STOCK that flow accumulates into, so the two must not both be fed to the funnel or announcements are double counted.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "annual_announcement_flow_gw": {
+      "value": 100.0,
+      "kind": "derived",
+      "source": "Derived by annualising Wood Mackenzie Q4 2025 additions",
+      "date": "2026-03",
+      "url": "https://avanzaenergy.substack.com/p/record-demand-declining-construction",
+      "note": "Annual run-rate extrapolation from Q4; not an observed annual flow.",
+      "evidence_type": "inherited_source_not_reverified",
+      "formula": {
+        "operation": "product",
+        "inputs": [
+          "pipeline.quarterly_pipeline_additions_q4_2025_gw",
+          "model.quarter_annualization_factor"
+        ]
+      }
+    }
+  },
+  "grid_interconnection": {
+    "historical_ir_to_cod_completion_rate": {
+      "value": 0.13,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "note": "Share of capacity submitting interconnection requests 2000-2020 that had reached commercial operation by end-2025. The longest-run empirical estimate of announcement-to-delivery conversion available anywhere. Generation-side; used here as the outside view on any queue-dependent pathway.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "historical_withdrawal_rate": {
+      "value": 0.75,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "note": "Withdrawn share of the same cohort. Remaining 10% still active.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "median_ir_to_cod_years": {
+      "value": 5.0,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "note": "Median for projects reaching COD in 2025; reported as 'over 5 years', so this is a floor.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "active_queue_generation_gw": {
+      "value": 1312.0,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "note": "Active generation capacity in US queues as of end-2025, across ~8,200 projects.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "active_queue_storage_gw": {
+      "value": 749.0,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "active_queue_gas_gw": {
+      "value": 253.0,
+      "kind": "observed",
+      "source": "LBNL, Queued Up: 2026 Edition",
+      "date": "2026-07",
+      "url": "https://emp.lbl.gov/queues",
+      "note": "Up 86% in 2025 while solar (-19%), storage (-16%) and wind (-19%) contracted. The queue is re-composing toward firm capacity.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "ercot": {
+    "large_load_queue_gw": {
+      "value": 474.0,
+      "kind": "observed",
+      "source": "Gov. Abbott letter to PUCT/ERCOT",
+      "date": "2026-08-03",
+      "url": "https://www.gibsondunn.com/what-governor-abbotts-data-center-audit-directive-means-for-ercot-and-the-batch-zero-study-process/",
+      "note": "More than five times ERCOT's record peak demand.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "data_center_share_of_queue": {
+      "value": 0.9,
+      "kind": "observed",
+      "source": "Gov. Abbott letter to PUCT/ERCOT",
+      "date": "2026-08-03",
+      "url": "https://www.akingump.com/en/insights/alerts/texas-pauses-data-center-interconnections-pending-statewide-audit",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "approval_to_energize_gw": {
+      "value": 9.0,
+      "kind": "observed",
+      "source": "interconnectionqueue.org ERCOT tracker",
+      "date": "2026-07",
+      "url": "https://interconnectionqueue.org/iso/ercot",
+      "note": "Large loads holding Approval to Energize.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "observed_peak_large_load_gw": {
+      "value": 3.9,
+      "kind": "observed",
+      "source": "interconnectionqueue.org ERCOT tracker",
+      "date": "2026-07",
+      "url": "https://interconnectionqueue.org/iso/ercot",
+      "note": "Observed peak consumption, not energized capacity. Different dates and populations prevent a queue conversion ratio.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "record_peak_demand_gw": {
+      "value": 91.089,
+      "kind": "observed",
+      "source": "ERCOT via rack2cloud analysis",
+      "date": "2026-07-22",
+      "url": "https://www.rack2cloud.com/phantom-capacity/",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "audit_start": {
+      "value": "2026-08-03",
+      "kind": "observed",
+      "source": "Gov. Abbott directive; ERCOT postponed Batch Zero classification",
+      "date": "2026-08-03",
+      "url": "https://www.gtlaw.com/en/insights/2026/8/texas-imposes-new-audit-requirement-for-data-center-projects-delaying-ercot-interconnection-reviews",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "audit_target_completion": {
+      "value": "2026-12-10",
+      "kind": "observed",
+      "source": "ERCOT statements to PUCT",
+      "date": "2026-08-20",
+      "url": "https://www.utilitydive.com/news/ercot-texas-puc-data-center-audit/828472/",
+      "note": "ERCOT has said the Batch Zero study will NOT be complete by its April 9, 2027 deadline and has not yet proposed a replacement date. Treat 2026-12-10 as the audit milestone, not the resumption of study results.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "batch_zero_study_slip": {
+      "value": true,
+      "kind": "observed",
+      "source": "ERCOT via Utility Dive",
+      "date": "2026-08-20",
+      "url": "https://www.utilitydive.com/news/ercot-texas-puc-data-center-audit/828472/",
+      "note": "Inherited reported schedule slip. Context only; no regional shock is implemented.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "medium_load_pipeline_mw": {
+      "value": 8800.0,
+      "kind": "observed",
+      "source": "ERCOT April snapshot via Utility Dive",
+      "date": "2026-08-20",
+      "url": "https://www.utilitydive.com/news/ercot-texas-puc-data-center-audit/828472/",
+      "note": "157 medium data center and crypto facilities below the Batch Zero threshold.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "sb6_financial_security_per_mw_usd": {
+      "value": 50000.0,
+      "kind": "observed",
+      "source": "PUCT draft rule 16 TAC 25.194 under SB6",
+      "date": "2026-03",
+      "url": "https://interconnectionqueue.org/iso/ercot",
+      "note": "Applies to loads 75 MW+, alongside site control, batch study and mandatory curtailment exposure. Raises real project cost and thins speculative requests.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "equipment_lead_times_months": {
+    "power_substation_transformer": {
+      "value": 37.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie 2026 read via VAWN index",
+      "date": "2026-08",
+      "url": "https://usevawn.com/resources/electrical-equipment-lead-times/",
+      "note": "Over 160 weeks. Largest HV units reach up to 4 years (48 months).",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "power_substation_transformer_worst": {
+      "value": 48.0,
+      "kind": "observed",
+      "source": "IEA transmission equipment lead times via VAWN",
+      "date": "2026-08",
+      "url": "https://usevawn.com/resources/electrical-equipment-lead-times/",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "gsu_transformer": {
+      "value": 33.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie survey via VAWN / IndustrialSage",
+      "date": "2026-08",
+      "url": "https://usevawn.com/resources/electrical-equipment-lead-times/",
+      "note": "144 weeks. Generator step-up units above 50 MVA reported at 100-150+ weeks.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "mv_switchgear_15kv": {
+      "value": 15.0,
+      "kind": "observed",
+      "source": "Terrapin Construction Group procurement data",
+      "date": "2026-06",
+      "url": "https://terrapincg.com/news/switchgear-transformer-generator-lead-times-2026",
+      "note": "52-80 weeks; pre-pandemic comparable was about 24 weeks.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "mv_switchgear_38kv": {
+      "value": 21.0,
+      "kind": "observed",
+      "source": "Terrapin Construction Group / IndustrialSage",
+      "date": "2026-06",
+      "url": "https://www.industrialsage.com/switchgear-lead-times-2026/",
+      "note": "78-104 weeks.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "large_frame_gas_turbine": {
+      "value": 66.0,
+      "kind": "derived",
+      "source": "Secondwatt synthesis of OEM order books",
+      "date": "2026-08",
+      "url": "https://secondwatt.com/resources/gas-turbine-orders-2025-backlog-lead-times-buyer-guide",
+      "note": "US wait times up to seven years for some frames; large turbines commonly quoted around five. Midpoint 5.5 years used.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "aeroderivative_gas_turbine": {
+      "value": 27.0,
+      "kind": "derived",
+      "source": "Secondwatt synthesis of OEM order books",
+      "date": "2026-08",
+      "url": "https://secondwatt.com/resources/gas-turbine-orders-2025-backlog-lead-times-buyer-guide",
+      "note": "Midpoint of inherited 18–36 month generation lead range. Full route also waits for transformers and other components.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "site_build_shell_and_fitout": {
+      "value": 18.0,
+      "kind": "assumption",
+      "source": "Industry standard data center build cycle",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION. Shell-to-commissioning absent power constraint. Sourced commentary repeatedly references an 18-month build cycle as the baseline that equipment lead times now exceed.",
+      "evidence_type": "model_judgment"
+    }
+  },
+  "turbine_supply": {
+    "ge_vernova_backlog_gw": {
+      "value": 116.0,
+      "kind": "observed",
+      "source": "GE Vernova Q2 2026 results",
+      "date": "2026-Q2",
+      "url": "https://finance.yahoo.com/energy/articles/gas-turbine-shortage-just-became-210000180.html",
+      "note": "Up from 100 GW three months earlier and 83 GW at end-2025. Expects 125 GW under contract by December. Taking reservations for 2031 delivery.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "ge_vernova_production_gw_per_year": {
+      "value": {
+        "2026": 20.0,
+        "2028": 24.0,
+        "2030": 30.0
+      },
+      "kind": "assumption",
+      "source": "GE Vernova CEO guidance",
+      "date": "2026-Q2",
+      "url": "https://finance.yahoo.com/energy/articles/gas-turbine-shortage-just-became-210000180.html",
+      "evidence_type": "reported_forecast_or_scenario_not_realized"
+    },
+    "siemens_energy_backlog_gw": {
+      "value": 69.0,
+      "kind": "observed",
+      "source": "Siemens Energy FQ3 2026 (ended 2026-06-30)",
+      "date": "2026-06-30",
+      "url": "https://finance.yahoo.com/energy/articles/gas-turbine-shortage-just-became-210000180.html",
+      "note": "Booked 15 GW and shipped six in the quarter. Lead times three years or more.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "mitsubishi_large_frame_backlog_gw": {
+      "value": 35.0,
+      "kind": "observed",
+      "source": "Mitsubishi Heavy Industries",
+      "date": "2026-08",
+      "url": "https://finance.yahoo.com/energy/articles/gas-turbine-shortage-just-became-210000180.html",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "industry_annual_capacity_gw_low": {
+      "value": 60.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie",
+      "date": "2026-08",
+      "url": "https://secondwatt.com/resources/gas-turbine-orders-2025-backlog-lead-times-buyer-guide",
+      "note": "Against roughly 110 GW of annual orders. Book runs 1.6-1.8 years deep before a new order is reached.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "industry_annual_capacity_gw_high": {
+      "value": 70.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie",
+      "date": "2026-08",
+      "url": "https://secondwatt.com/resources/gas-turbine-orders-2025-backlog-lead-times-buyer-guide",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "industry_annual_orders_gw": {
+      "value": 110.0,
+      "kind": "observed",
+      "source": "Wood Mackenzie",
+      "date": "2026-08",
+      "url": "https://secondwatt.com/resources/gas-turbine-orders-2025-backlog-lead-times-buyer-guide",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "us_share_of_turbine_output": {
+      "value": 0.5,
+      "kind": "assumption",
+      "source": "Derived from Siemens Energy CEO comment that addressable market could reach 120 GW/yr, roughly half American",
+      "date": "2026",
+      "url": "https://finance.yahoo.com/energy/articles/gas-turbine-shortage-just-became-210000180.html",
+      "note": "ASSUMPTION. Applied to allocate global OEM throughput to US deliverability.",
+      "evidence_type": "model_judgment"
+    },
+    "data_center_share_of_us_turbine_output": {
+      "value": 0.45,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION, and a material one. Turbines also serve utility fleet replacement, coal retirement backfill and industrial load. Sensitivity range 0.30-0.60 in scenarios.",
+      "evidence_type": "model_judgment"
+    }
+  },
+  "demand": {
+    "na_absorption_h1_2026_gw": {
+      "value": 25.0,
+      "kind": "observed",
+      "source": "JLL North America Data Center Report",
+      "date": "2026-08-11",
+      "url": "https://www.jll.com/en-us/newsroom/data-center-demand-exceeds-expectations-in-h1-2026",
+      "note": "Double year-earlier level, five times H1 2024. INCLUDES hyperscale self-build. Not comparable to CBRE's colo figure.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "na_under_construction_gw": {
+      "value": 66.0,
+      "kind": "observed",
+      "source": "JLL",
+      "date": "2026-08-11",
+      "url": "https://www.jll.com/en-us/newsroom/data-center-demand-exceeds-expectations-in-h1-2026",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cbre_primary_supply_mw": {
+      "value": 10903.0,
+      "kind": "observed",
+      "source": "CBRE North America Data Center Trends H1 2026",
+      "date": "2026-08-28",
+      "url": "https://www.datacenterfrontier.com/site-selection/news/55401462/cbre-record-data-center-construction-fails-to-ease-capacity-crunch",
+      "note": "Primary market supply, up 33.7% YoY.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cbre_primary_vacancy": {
+      "value": 0.014,
+      "kind": "observed",
+      "source": "CBRE H1 2026",
+      "date": "2026-08-28",
+      "url": "https://www.datacenterfrontier.com/site-selection/news/55401462/cbre-record-data-center-construction-fails-to-ease-capacity-crunch",
+      "note": "Down from 1.6% a year earlier. Record low. Third consecutive year near 1%.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cbre_primary_under_construction_mw": {
+      "value": 7481.1,
+      "kind": "observed",
+      "source": "CBRE H1 2026",
+      "date": "2026-08-28",
+      "url": "https://www.datacenterfrontier.com/site-selection/news/55401462/cbre-record-data-center-construction-fails-to-ease-capacity-crunch",
+      "note": "Up 24.8%, a record.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cbre_preleased_share_of_construction": {
+      "value": 0.804,
+      "kind": "observed",
+      "source": "CBRE H1 2026",
+      "date": "2026-08-28",
+      "url": "https://www.datacenterfrontier.com/site-selection/news/55401462/cbre-record-data-center-construction-fails-to-ease-capacity-crunch",
+      "note": "Reported prelease share; neither proof of future occupancy nor a test of a capex bubble. Context only.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "cbre_net_absorption_h1_2026_mw": {
+      "value": 1456.2,
+      "kind": "observed",
+      "source": "CBRE H1 2026",
+      "date": "2026-08-28",
+      "url": "https://www.datacenterfrontier.com/site-selection/news/55401462/cbre-record-data-center-construction-fails-to-ease-capacity-crunch",
+      "note": "Primary colocation markets only. Do NOT sum with the JLL 25 GW figure.",
+      "evidence_type": "inherited_source_not_reverified"
+    },
+    "hyperscaler_2026_capex_usd_bn": {
+      "value": 602.0,
+      "kind": "assumption",
+      "source": "CreditSights via Global Data Center Hub",
+      "date": "2026-01",
+      "url": "https://www.globaldatacenterhub.com/p/us-data-center-infrastructure-the",
+      "note": "Five largest hyperscalers, up 36% YoY, roughly 75% AI-tied.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "conversion_ratios": {
+    "generation_nameplate_per_gw_it_load": {
+      "value": 1.15,
+      "kind": "assumption",
+      "source": "Explicit model judgment; no external observation",
+      "date": "2026",
+      "url": null,
+      "note": "ASSUMPTION. Dedicated behind-the-meter generation nameplate required per GW of critical IT load, allowing for availability and maintenance reserve. Sensitivity 1.05-1.35.",
+      "evidence_type": "model_judgment"
+    },
+    "aeroderivative_unit_mw_typical": {
+      "value": 35.0,
+      "kind": "observed",
+      "source": "GE Vernova LM2500XPRESS class specification",
+      "date": "2026-02",
+      "url": "https://www.modernpowersystems.com/data-centre-power/could-a-delivery-backlog-derail-a-gt-boom/",
+      "note": "Representative aeroderivative unit rating. Campuses in this class are assembled from ~25-30 units to reach roughly 1 GW of nameplate, which is why the pathway scales in increments rather than in single large blocks.",
+      "evidence_type": "inherited_source_not_reverified"
+    }
+  },
+  "model": {
+    "reference_year": {
+      "value": 2026,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Fixed origin for forecasts and opening cohorts.",
+      "evidence_type": "model_judgment"
+    },
+    "pathway_shares": {
+      "value": {
+        "grid_queue": 0.45,
+        "btm_large_frame": 0.2,
+        "btm_aeroderivative": 0.15,
+        "colo_lease": 0.2
+      },
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Allocation of mutually exclusive new-build routes; sums to one.",
+      "evidence_type": "model_judgment"
+    },
+    "large_frame_power_gate": {
+      "value": 0.7,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Conditional firm-power conversion.",
+      "evidence_type": "model_judgment"
+    },
+    "aero_power_gate": {
+      "value": 0.8,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Conditional firm-power conversion.",
+      "evidence_type": "model_judgment"
+    },
+    "colo_development_gate": {
+      "value": 0.85,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "New merchant colocation development; not leases on existing construction.",
+      "evidence_type": "model_judgment"
+    },
+    "colo_power_gate": {
+      "value": 0.9,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Conditional power conversion; transformers are not assumed secured.",
+      "evidence_type": "model_judgment"
+    },
+    "aero_turbine_share": {
+      "value": 0.25,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Dedicated fraction of turbine capacity. Unused allocation is not transferred across turbine types.",
+      "evidence_type": "model_judgment"
+    },
+    "site_permitting_months": {
+      "value": 12,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Parallel elapsed readiness time from announcement.",
+      "evidence_type": "model_judgment"
+    },
+    "commissioning_ready_months": {
+      "value": 18,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Total elapsed readiness milestone including shell/fit-out and commissioning; not an extra sequential duration.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_announcements_gw": {
+      "value": {
+        "2020": 15,
+        "2021": 20,
+        "2022": 30,
+        "2023": 50,
+        "2024": 70,
+        "2025": 85
+      },
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Illustrative US backcast, NOT measured historical announcements. Replaces construction-stock seeding entirely. Pending post-2025 deliveries only; earlier deliveries and rationing excluded. Sensitivity required.",
+      "evidence_type": "model_judgment"
+    },
+    "landing_rule": {
+      "value": "linear_calendar_interpolation",
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Annual timing approximation: split fractional lags between adjacent calendar years. Not a project-level delivery-date promise.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_equipment_backlog_gw": {
+      "value": 0,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "No inherited equipment backlog at the reference year; pre-window volumes landing after reference still enter the queue.",
+      "evidence_type": "model_judgment"
+    },
+    "bookings_us_share": {
+      "value": 0.9,
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Illustrative bridge from North America signed bookings to US; not an observed geographic share.",
+      "evidence_type": "model_judgment"
+    },
+    "booking_delivery_weights": {
+      "value": [
+        0.2,
+        0.5,
+        0.3
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Requested-service lag weights for signed bookings: years 0, 1, 2. Sum to one.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_bookings_us_gw": {
+      "value": {
+        "2024": 30,
+        "2025": 40
+      },
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Illustrative US bookings signed before the forecast origin. No additional opening demand stock.",
+      "evidence_type": "model_judgment"
+    },
+    "booking_growth": {
+      "value": {
+        "low": 0.85,
+        "base": 1.0,
+        "high": 1.15
+      },
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Annual signed-booking multipliers after 2026.",
+      "evidence_type": "reported_forecast_or_scenario_not_realized"
+    },
+    "turbine_sensitivity": {
+      "value": [
+        0.3,
+        0.375,
+        0.45,
+        0.525,
+        0.6
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Data-center turbine allocation scenarios.",
+      "evidence_type": "model_judgment"
+    },
+    "aero_sensitivity": {
+      "value": [
+        0.15,
+        0.25,
+        0.35,
+        0.45
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Aeroderivative allocation scenarios.",
+      "evidence_type": "model_judgment"
+    },
+    "opening_sensitivity": {
+      "value": [
+        0.5,
+        1,
+        1.5
+      ],
+      "kind": "assumption",
+      "source": "Model design",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Multipliers on illustrative opening announcement cohorts.",
+      "evidence_type": "model_judgment"
+    },
+    "horizon_years": {
+      "value": 8,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Default reporting horizon; origin stored separately.",
+      "evidence_type": "model_judgment"
+    },
+    "h1_annualization_factor": {
+      "value": 2,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Assume H2 equals H1 to initialize signing flow, not delivery-year demand.",
+      "evidence_type": "model_judgment"
+    },
+    "quarter_annualization_factor": {
+      "value": 4,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Assume quarterly announcement flow repeats four times.",
+      "evidence_type": "model_judgment"
+    },
+    "grid_lifetime_conversion_proxy": {
+      "value": 0.13,
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Transfer of generation queue completion rate to load-side projects is an assumption. Conditional power gate = min(1, proxy / development gate); no independent second 13% haircut.",
+      "evidence_type": "model_judgment"
+    },
+    "ui_controls": {
+      "value": [
+        {
+          "path": "turbine_supply.data_center_share_of_us_turbine_output",
+          "label": "US turbine allocation to data centers",
+          "min": 0.25,
+          "max": 0.65,
+          "step": 0.025
+        },
+        {
+          "path": "pipeline.quarterly_pipeline_additions_q4_2025_gw",
+          "label": "Quarterly announcements (GW)",
+          "min": 10,
+          "max": 50,
+          "step": 1
+        },
+        {
+          "path": "pipeline.share_under_active_development",
+          "label": "Active development share",
+          "min": 0.15,
+          "max": 0.75,
+          "step": 0.01
+        },
+        {
+          "path": "equipment_lead_times_months.aeroderivative_gas_turbine",
+          "label": "Aero generation readiness (months)",
+          "min": 18,
+          "max": 48,
+          "step": 1
+        },
+        {
+          "path": "equipment_lead_times_months.power_substation_transformer",
+          "label": "Transformer readiness (months)",
+          "min": 24,
+          "max": 60,
+          "step": 1
+        },
+        {
+          "path": "model.bookings_us_share",
+          "label": "US share of North America bookings",
+          "min": 0.5,
+          "max": 1,
+          "step": 0.05
+        }
+      ],
+      "kind": "assumption",
+      "source": "Explicit model judgment",
+      "date": "2026-09-07",
+      "url": null,
+      "note": "Exploratory control ranges, not confidence intervals.",
+      "evidence_type": "model_judgment"
+    },
+    "supply_topologies": {
+      "value": {
+        "base": {},
+        "alternative-btm": {
+          "btm_aeroderivative": [
+            "transformer",
+            "gsu"
+          ]
+        }
+      },
+      "kind": "assumption",
+      "source": "Explicit model judgment; alternative topology not externally verified",
+      "date": "2026-09-11",
+      "url": null,
+      "evidence_type": "model_judgment",
+      "note": "Component exclusions by pathway. Alternative BTM replaces only the existing aero route; assumes no new HV substation or GSU procurement is needed and other electrical readiness is covered by retained milestones. Does not establish equipment availability or engineering feasibility. All shares, gates, turbine ceilings and opening announcements remain fixed; no additional supply route is added."
+    }
+  },
+  "validation": {
+    "cbre_primary_inventory_2025_gw": {
+      "value": 9.432,
+      "kind": "observed",
+      "source": "CBRE H2 2025 press release",
+      "date": "2026-02-26",
+      "url": "https://www.cbre.com/press-releases/fast-growing-north-american-data-center-market-set-records-in-2025",
+      "note": "Year-end total inventory across eight primary markets. NOT annual US new delivery; excluded from calibration and accuracy scoring.",
+      "evidence_type": "primary_source_verified_2026-09-07"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+rung,value,unit,narrowing,step_ratio
+"Hyperscaler capex, all purposes",602.0,$bn,Starting point most TAM work uses,
+AI-tied capital only,451.5,$bn,Strip general cloud,0.75
+"All buyers, all segments",627.0833333333334,$bn,"Add neocloud, enterprise, sovereign",1.388888888888889
+Capacity implied,17.916666666666668,GW,Divide by all-in cost per GW,
+Merchant-addressable,8.026666666666667,GW,Exclude self-consumed hyperscaler capacity,0.448
+Hypothetical merchant annual revenue at full occupation,68.22666666666667,$bn/year,Illustrative capacity times revenue proxy; not a sales forecast,
