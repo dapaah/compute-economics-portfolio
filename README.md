@@ -1,38 +1,103 @@
-# AI Infrastructure Finance Portfolio
+# AI Infrastructure Economics & Financial Architecture
 
-Demand, deliverable capacity, deployment mix, and the financial case behind build-ahead.
+Demand, deliverable capacity, deployment strategy, pricing, and the capital case behind build-ahead.
 
-This repository is a public practice ground for the planning problem a vertically integrated AI infrastructure company actually faces:
+This repository is a public practice ground for the planning problem faced by capital-intensive AI infrastructure operators:
 
-**how much demand is signed → how much capacity can be energized, made ready, and occupied → which mix of colo / owned / modular to fund → what price and capital case finance can defend.**
+**how much demand is real → how much capacity can actually be energized, made ready, and occupied → which deployment path should be funded → what pricing and capital case finance can defend.**
 
-> **Data standard.** Models 1–6 use seeded synthetic data. The compute supply-demand module mixes inherited public reporting with explicit assumptions. No confidential company information is used. Modeled outputs are not operating results and are not a Crusoe forecast.
+The models connect:
+
+**AI workload demand → GPU capacity → datacenter and power deliverability → deployment choice → pricing → utilization → capital allocation → returns.**
+
+> **Data standard.** Models 1–6 use seeded synthetic data. The compute supply-demand module uses public industry data, derived values, calibrated parameters, and explicit assumptions. No confidential company information is used. Modeled outputs are not operating results and are not forecasts for any specific company.
+
+## Current findings
+
+- Merchant backlog clears in **2029** in the current base case; spare merchant capacity emerges thereafter.
+- An enterprise/sovereign-growth scenario clears backlog in **2028**; other segment-mix scenarios remain at 2029.
+- Merchant supply/request crossover occurs in **2027**, while the separate all-market base case remains constrained through **2033**.
+- Announced capacity is not treated as usable supply: the model distinguishes energized, ready, and occupied capacity.
+- The model does not assume permanent scarcity. Contrary outputs are retained rather than calibrated away.
+
+These are model outputs, not market facts. The purpose of the system is to make the assumptions and physical constraints visible enough to challenge.
 
 ## Start here
 
 Planning pages first. Token notebooks last.
 
-1. **[Deployment mix](portfolio/deployment_mix_recommendation.md)** — colo vs. owned campus vs. modular (Spark-class) by buyer segment. What funds, what waits.
-2. **[Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md)** — signed / reserved / verbal × the same three modes. Verbal is a forecast line, not a capital object.
-3. **[Pricing forecast method](portfolio/pricing_forecast_method_stub.md)** — four price units; tightness, ramp, and constraint as named signals; MAPE and bias with a driver split. No invented rate card.
-4. **[Compute supply and requested-service demand](compute-supply-demand/README.md)** — announced MW versus deliverable IT capacity; bookings vs. merchant-capital lenses; segment mix. Open `compute-supply-demand/deliverable_capacity.html` locally.
-5. **[Demand-planning brief](portfolio/demand_planning_brief.md)** — what the public model will and will not claim.
-6. **[Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md)** — site pipeline → power and construction gates → GPU deployment → CapEx, liquidity, scenarios.
+1. **[Deployment mix](portfolio/deployment_mix_recommendation.md)** — colo vs. owned campus vs. modular infrastructure by buyer segment. What funds, what waits.
+2. **[Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md)** — signed / reserved / verbal demand × deployment mode. Verbal demand is a forecast input, not a capital commitment.
+3. **[Pricing forecast method](portfolio/pricing_forecast_method_stub.md)** — price units, demand tightness, ramp timing, supply constraints, forecast scoring, MAPE, bias, and driver attribution. No invented rate card.
+4. **[Compute supply and requested-service demand](compute-supply-demand/README.md)** — announced MW versus deliverable IT capacity; requested-service cohorts; buyer/consumer mix; energized / ready / occupied capacity.
+5. **[Demand-planning brief](portfolio/demand_planning_brief.md)** — what the public model can and cannot claim.
+6. **[Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md)** — site pipeline → power and construction gates → GPU deployment → CapEx, liquidity, scenarios, capital stack, and returns.
 7. **[Static executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — GitHub Pages view of Model 6.
-8. **Models 1–5** — token, inference, cache, usage-to-GPU, and allocation economics. Product-margin machinery. Not the primary planning artifact.
+8. **Models 1–5** — token, inference, cache, usage-to-GPU, and capacity-allocation economics. These are the product-margin layer, not the primary infrastructure-planning artifact.
 
-## What maps to a demand-planning and market-economics seat
+## Planning questions the portfolio answers
 
 | Planning question | Where it lives | What is not claimed |
 |---|---|---|
-| Which deployment mix should we fund by segment? | `portfolio/deployment_mix_recommendation.md` | A Crusoe site list |
-| When is build-ahead justified vs. wait for a signature? | `portfolio/build_ahead_vs_build_to_order.md` | A live bookings file |
-| How is the canonical price set and scored? | `portfolio/pricing_forecast_method_stub.md` | A 2027 $/GPU-hr |
-| Who is buying compute, and how is the mix shifting? | `compute-supply-demand/` segment-mix paths | Observed customer contracts |
-| Is announced data-center and power supply actually deliverable? | `compute-supply-demand/` announcement → energized / ready / occupied | A measured industry shortage |
-| What financial case sits behind a site? | Model 6 | A live campus portfolio |
+| Who funds/buys capacity, who consumes compute, and how is segment mix shifting? | `compute-supply-demand/` | Observed customer contracts |
+| Can announced datacenter and power capacity actually be delivered? | `compute-supply-demand/` | A measured industry shortage |
+| Which deployment path should be funded by demand profile? | `portfolio/deployment_mix_recommendation.md` | A live site portfolio |
+| When is build-ahead justified versus waiting for contracted demand? | `portfolio/build_ahead_vs_build_to_order.md` | A live bookings file |
+| How should pricing be forecast and scored? | `portfolio/pricing_forecast_method_stub.md` | A current market rate card |
+| What financial case sits behind a site or portfolio? | Model 6 | A live campus portfolio |
+
+## System architecture
+
+The portfolio is organized around three linked questions.
+
+### 1. What is the demand?
+
+The demand side separates the population that funds or buys infrastructure capacity from the population that consumes compute.
+
+It models:
+
+- hyperscaler, neocloud, and enterprise/sovereign funding paths
+- workload and token-demand growth
+- training vs. inference mix
+- changing segment mix over time
+- merchant-addressable demand
+- provider spend and revenue opportunity
+- utilization, backlog, and spare capacity
+
+### 2. Can the infrastructure physically deliver it?
+
+The supply side distinguishes announced capacity from capacity that can actually become revenue-bearing infrastructure:
+
+**announcement → development → interconnection / power → equipment → energized → ready → occupied**
+
+The model treats physical constraints explicitly rather than assuming announced MW become usable capacity on schedule.
+
+### 3. Where should capital be deployed?
+
+The capital layer connects demand and deliverability to:
+
+- deployment mode
+- build-ahead vs. build-to-order
+- CapEx / OpEx / cash
+- liquidity
+- financing structure
+- project returns
+- pricing
+- scenario and sensitivity analysis
+
+## Evidence standard
+
+Every material public claim should trace to executed code, a labeled parameter, a source registry, an output table, a chart, or an executive decision brief.
+
+Parameters are classified as **observed · derived · calibrated · assumed**.
+
+Contrary outputs are retained. No parameter is optimized to force a shortage thesis, a particular investment conclusion, or a specific employer narrative.
+
+Methods are separated from operating claims. Public-data models are not presented as substitutes for live customer contracts, proprietary site ledgers, or production fleet data.
 
 ## How to run
+
+Install dependencies and generate the original data pipeline:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -62,6 +127,10 @@ python run_phase4.py
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-## Evidence standard
+## What this repository is
 
-Every public claim should trace to executed code, a labeled input, an output table, a chart, or an executive brief. Parameters are classified as observed, derived, calibrated, or assumed. Contrary outputs are retained. No parameter is optimized to force a shortage thesis. The three planning pages are methods. They are not Crusoe operating results.
+This is not a claim of prior datacenter operating ownership.
+
+It is a public, executable demonstration of the analytical system used to think about AI infrastructure:
+
+**demand → physical capacity → deployment → pricing → capital allocation → returns.**
