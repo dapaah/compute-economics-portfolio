@@ -22,9 +22,31 @@ The models connect:
 
 These are model outputs, not market facts. The purpose of the system is to make the assumptions and physical constraints visible enough to challenge.
 
+## How to read this repository
+
+The default path is AI infrastructure planning. The objects underneath — demand quality, deliverable capacity, utilization, price, cash, and whether to buy ahead of contracted demand — also apply to other owned-compute businesses. The public dataset is GPU/MW. The units are not the claim.
+
+**Path A — AI infrastructure planning** (demand, deliverability, deployment mix, pricing method, capital case)
+
+1. [Demand-planning brief](portfolio/demand_planning_brief.md)
+2. [Compute supply and requested-service demand](compute-supply-demand/README.md)
+3. [Deployment mix](portfolio/deployment_mix_recommendation.md)
+4. [Pricing forecast method](portfolio/pricing_forecast_method_stub.md)
+5. [Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md)
+6. [Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md)
+
+**Path B — owned-fleet / consumption compute** (when to add machines, what a unit of compute should cost, how the buy is financed)
+
+The repo does not model a CI product, a runner rate card, or any company's live fleet. Read the decision system, not the GPU labels:
+
+1. [Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md) — signed / reserved / verbal demand versus capital commitment
+2. [Pricing forecast method](portfolio/pricing_forecast_method_stub.md) — price units, tightness, scoring; no invented rate card
+3. [Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md) — capacity → CapEx / cash / financing structure / returns
+4. Models 1–5 — usage, utilization, and unit-cost layer
+
 ## Start here
 
-Planning pages first. Token notebooks last.
+Planning pages first. Token notebooks last.Path A is the default order below.
 
 1. **[Deployment mix](portfolio/deployment_mix_recommendation.md)** — colo vs. owned campus vs. modular infrastructure by buyer segment. What funds, what waits.
 2. **[Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md)** — signed / reserved / verbal demand × deployment mode. Verbal demand is a forecast input, not a capital commitment.
