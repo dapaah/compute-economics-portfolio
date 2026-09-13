@@ -42,7 +42,7 @@ The repo does not model a CI product, a runner rate card, or any company's live 
 1. [Build-ahead vs. build-to-order](portfolio/build_ahead_vs_build_to_order.md) — signed / reserved / verbal demand versus capital commitment
 2. [Pricing forecast method](portfolio/pricing_forecast_method_stub.md) — price units, tightness, scoring; no invented rate card
 3. [Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md) — capacity → CapEx / cash / financing structure / returns
-4. Models 1–5 — usage, utilization, and unit-cost layer
+4. 4. [Models 1–5](models/) — usage, utilization, and unit-cost layer
 
 ## Start here
 
@@ -55,7 +55,7 @@ Planning pages first. Token notebooks last.Path A is the default order below.
 5. **[Demand-planning brief](portfolio/demand_planning_brief.md)** — what the public model can and cannot claim.
 6. **[Datacenter capital engine (Model 6)](model_06_datacenter_capital_forecasting/README.md)** — site pipeline → power and construction gates → GPU deployment → CapEx, liquidity, scenarios, capital stack, and returns.
 7. **[Static executive dashboard](https://dapaah.github.io/compute-economics-portfolio/)** — GitHub Pages view of Model 6.
-8. **Models 1–5** — token, inference, cache, usage-to-GPU, and capacity-allocation economics. These are the product-margin layer, not the primary infrastructure-planning artifact.
+8. **[Models 1–5](models/)** — token, inference, cache, usage-to-GPU, and capacity-allocation economics. These are the product-margin layer, not the primary infrastructure-planning artifact.
 
 ## Planning questions the portfolio answers
 
