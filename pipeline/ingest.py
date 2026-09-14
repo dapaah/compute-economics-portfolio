@@ -1,7 +1,7 @@
 """
 ingest.py — Load raw synthetic events into SQLite (data/events.db).
 
-This is the "100,000+ events processed" claim made real: it reads the CSV
+This is the "120,000 events processed" claim made real: it reads the CSV
 produced by data/generate_data.py, writes the `inference_events` table, adds
 the cost constants as a small reference table, and creates indexes the model
 queries rely on.
