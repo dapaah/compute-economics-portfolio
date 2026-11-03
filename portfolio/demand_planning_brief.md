@@ -1,6 +1,6 @@
 # Demand, deliverable capacity, and mix — executive note
 
-Synthetic / public-input portfolio. Not a Crusoe forecast. Not an industry proof.
+Synthetic / public-input portfolio. Not a forecast. Not an industry proof.
 
 ## The planning objects
 
