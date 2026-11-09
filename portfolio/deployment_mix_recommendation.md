@@ -1,6 +1,6 @@
 # Deployment mix recommendation
 
-Colo vs. owned campus vs. Spark modular — by buyer segment.
+Colo vs. owned campus — by buyer segment.
 
 Planning judgment for discussion. The supply-demand module does **not** yet emit this table.
 
@@ -14,7 +14,7 @@ Allocate Crusoe capacity by who takes utilization risk and how fast the MW must 
 4. Is the workload campus-scale training or distributed inference?
 
 Signed + customer-owned utilization + dedicated power → owned.  
-Signed + Crusoe-owned utilization + short lead time → Spark or colo.  
+Signed + Crusoe-owned utilization + short lead time → colo.  
 Verbal pipeline does not justify a full build.
 
 ## Mix
@@ -27,10 +27,10 @@ Verbal pipeline does not justify a full build.
 
 ## What flips a cell
 
-- Power late, contract firm → shift the first energization tranche to colo/Spark; do not cancel the campus.
+- Power late, contract firm → shift the first energization tranche to colo; do not cancel the campus.
 - Contract slips, power firm → stop build-ahead; keep the site option.
-- Inference share rises and training offtake is full → raise Spark and small colo; do not add another owned training hall on speculation.
-- Neocloud-growth path (to 30% by 2033) raises merchant tightness → more colo + Spark, not more uncontracted owned MW.
+- Inference share rises and training offtake is full → raise small colo; do not add another owned training hall on speculation.
+- Neocloud-growth path (to 30% by 2033) raises merchant tightness → more colo, not more uncontracted owned MW.
 - Enterprise/sovereign-growth path (to 26%) looks large in funding terms and small in merchant terms, because that path is mostly self-build.
 
 ## Do not do from the public model
