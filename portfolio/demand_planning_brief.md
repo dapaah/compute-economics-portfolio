@@ -29,7 +29,7 @@ A neocloud version of this model should be rebuilt around deal-level objects the
 
 - signed MW, reserved MW, and verbal pipeline, separately;
 - renewal, churn, and slip by segment;
-- product mix across cloud, colo, owned campus, and Spark modular;
+- product mix across cloud, colo, owned campus, and modular;
 - interconnection and equipment queues that are site-specific, not national averages;
 - a pricing forecast whose accuracy is scored each quarter.
 
@@ -37,11 +37,11 @@ Until those exist, the public model can only show the *shape* of the decision: t
 
 ## Deployment mix (the missing output on purpose)
 
-Colo vs. owned vs. Spark is a function of ramp speed, contract tenor, power certainty, and who owns the residual utilization risk.
+Colo vs. owned is a function of ramp speed, contract tenor, power certainty, and who owns the residual utilization risk.
 
 - **Hyperscaler training / campus offtake:** owned or dedicated campus when power and tenor are contracted; colo only as a bridge.
-- **Neocloud / reseller:** owned or leased blocks sized to contracted utilization floors; Spark is usually the wrong primitive at that scale.
-- **Enterprise / inference / edge:** Spark and smaller colo nodes win on lead time; full builds win only where occupancy is already visible.
+- **Neocloud / reseller:** owned or leased blocks sized to contracted utilization floors.
+- **Enterprise / inference / edge:** Smaller colo nodes win on lead time; full builds win only where occupancy is already visible.
 
 The public file does not yet emit that recommendation as a table. That is the next artifact, and it should be driven by segment + ramp + power-certainty flags, not by a single scarcity narrative.
 
