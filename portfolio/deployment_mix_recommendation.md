@@ -6,7 +6,7 @@ Planning judgment for discussion. The supply-demand module does **not** yet emit
 
 ## Decision rule
 
-Allocate Crusoe capacity by who takes utilization risk and how fast the MW must be live — not by a single scarcity story.
+Allocate neolcooud capacity by who takes utilization risk and how fast the MW must be live — not by a single scarcity story.
 
 1. Is the MW signed, reserved, or verbal?
 2. Who owns residual utilization if ramp slips?
