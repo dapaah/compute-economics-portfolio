@@ -25,7 +25,7 @@ Those two lenses are kept visible on purpose. A planning system that forces them
 
 ## What would change the recommendation
 
-A Crusoe-internal version of this model should be rebuilt around deal-level objects the public file does not have:
+A neocloud version of this model should be rebuilt around deal-level objects the public file does not have:
 
 - signed MW, reserved MW, and verbal pipeline, separately;
 - renewal, churn, and slip by segment;
